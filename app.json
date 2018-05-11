@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/welcome/welcome"
+    "pages/welcome/welcome",
+    "pages/post/post"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -12,7 +12,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/post/post",
         "text": "首页"
       },
       {

@@ -35,7 +35,14 @@
 				{
 					"id": -1,
 					"name": "welcome",
-					"pathName": "pages/welcome/welcome"
+					"pathName": "pages/welcome/welcome",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "post",
+					"pathName": "pages/post/post",
+					"query": ""
 				}
 			]
 		}
