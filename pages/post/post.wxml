@@ -15,7 +15,7 @@
   </swiper>
   <!-- 新闻列表 -->
   <block wx:for="{{postList}}" wx:for-item="item" wx:for-index="idx" wx:key="unique">
-    <view>
+    <view bindtap='onPostTap' data-post-id='{{item.postId}}'>
        <template is="postItem" data="{{...item}}" /> 
     </view>
   </block>
