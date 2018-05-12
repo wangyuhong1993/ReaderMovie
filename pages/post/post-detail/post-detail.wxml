@@ -1,6 +1,7 @@
 <!--pages/post/post-detail.wxml-->
 <view class='container'>
   <image class='head-image' src='/images/post/sls.JPG'></image>
+  <image class='head-image' src='/images/music/music-stop.png'></image>
   <view class='author-date'>
     <image class='avatar' src='/images/avatar/1.png'></image>
     <text class='author'>汪育宏</text>
@@ -8,14 +9,14 @@
     <text class='date'>2016-12-1</text>
   </view>
   <text class='title'>
-    从倒数v模式冷漠能吃能睡了呢索拉卡承诺书理财能力是拿出来处理快速愁死了从哪里看上你次氯酸钠陈老师
+    从倒数v模式冷漠能吃能睡了
   </text>
   <view class='tool'>
     <view class='circle-img'>
-      <image class='head-image' src='/images/icon/collection-anti.png'></image>
-      <image class='head-image' class="share-img" src="/images/icon/share.png"></image>
+      <image class="icon" src='/images/icon/collection-anti.png'></image>
+      <image class="icon share-img" src="/images/icon/share-anti.png"></image>
     </view>
     <view class='horizon'></view>
   </view>
-  <text class='detail'>1234567865434567</text>
+  <text class='detail'> 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了</text>
 </view>
