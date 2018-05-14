@@ -1,22 +1,21 @@
 <!--pages/post/post-detail.wxml-->
 <view class='container'>
-  <image class='head-image' src='/images/post/sls.JPG'></image>
-  <image class='head-image' src='/images/music/music-stop.png'></image>
+  <image class='head-image' src='{{postData.headImgSrc}}'></image>
+  <image catchtap='onMusicTap' class='audio' src='/images/music/music-start.png'></image>
   <view class='author-date'>
-    <image class='avatar' src='/images/avatar/1.png'></image>
-    <text class='author'>汪育宏</text>
+    <image class='avatar' src='{{postData.avatar}}'></image>
+    <text class='author'>{{postData.author}}</text>
     <text class='const-text'>发表于</text>
-    <text class='date'>2016-12-1</text>
+    <text class='date'>{{postData.datetime}}</text>
   </view>
-  <text class='title'>
-    从倒数v模式冷漠能吃能睡了
-  </text>
+  <text class='title'>{{postData.title}}</text>
   <view class='tool'>
     <view class='circle-img'>
-      <image class="icon" src='/images/icon/collection-anti.png'></image>
-      <image class="icon share-img" src="/images/icon/share-anti.png"></image>
+      <image wx:if="{{collected}}" class="icon" catchtap="onColletionTap"  src='/images/icon/collection.png'></image>
+      <image wx:else class="icon" catchtap="onColletionTap"  src='/images/icon/collection-anti.png'></image>
+      <image class="icon share-img" src="/images/icon/share-anti.png" catchtap="onShareTap"  src='/images/icon/collection-anti.png'></image>
     </view>
     <view class='horizon'></view>
   </view>
-  <text class='detail'> 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了 从倒数v模式冷漠能吃能睡了</text>
+  <text class='detail'>{{postData.detail}}</text>
 </view>
