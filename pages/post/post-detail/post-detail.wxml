@@ -1,4 +1,3 @@
-<!--pages/post/post-detail.wxml-->
 <view class='container'>
   <image class='head-image' src='{{postData.headImgSrc}}'></image>
   <image catchtap='onMusicTap' class='audio' src='/images/music/music-start.png'></image>
