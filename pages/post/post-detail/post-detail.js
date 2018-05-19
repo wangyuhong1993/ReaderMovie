@@ -1,4 +1,5 @@
 var postsData = require('../../../data/posts-data.js');
+var app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -15,7 +16,7 @@ Page({
     var that = this;
     var postId = option.id;
     this.data.currentPostId = postId;  // 当前新闻id
-    var postData = postsData.postList[postId];
+    var postData = postsData.postList[postId]; // 新闻数据
     this.setData({
       postData: postData
     })
@@ -42,16 +43,19 @@ Page({
     }
 
     var innerAudioContext = wx.createInnerAudioContext(); // 播放器对象
+    innerAudioContext.src = postsData.postList[postId].music.url;
+    innerAudioContext.volume = 0.3;
+    
+    // 全局播放控制
+    // if(app.globalData.g_isPlayingMusic){
+    //   this.setData({
+    //     isPlayingMusic: true
+    //   })
+    // }
+
     this.setData({
       innerAudioContext: innerAudioContext
     })
-    // 音频播放更新
-    innerAudioContext.onStop(function(){
-      that.setData({
-        currentTime: innerAudioContext.currentTime
-      })
-    })
-
   },
   // 添加收藏
   onColletionTap:function(event){
@@ -125,15 +129,16 @@ Page({
   onMusicTap: function(event){
     var isPlayingMusic = this.data.isPlayingMusic;
     var innerAudioContext = this.data.innerAudioContext;
+    console.log("播放状态"+isPlayingMusic);
     // 播放暂停
     if (isPlayingMusic){
-      innerAudioContext.autoplay = false;
+      console.log(1);
+      innerAudioContext.pause();
+      app.globalData.g_isPlayingMusic = false;
     }else {
-      innerAudioContext.autoplay = true;
-      innerAudioContext.src = 'http://dl.stream.qqmusic.qq.com/C400003baW852UMpHC.m4a?vkey=340BED4D51B6765A8CD75FE18FCF6B65C099178243A8B2DE221095E527C2DA3B7F2E3252DC5417178C6C33C510F8B292A33DCDE11D1A5F96&guid=7013596353&uin=0&fromtag=66';
-      innerAudioContext.volume = 0.3;
-      // innerAudioContext.seek = this.data.currentTime;
-      console.log();
+      console.log(2);
+      innerAudioContext.play();
+      app.globalData.g_isPlayingMusic = true;
     }
     this.setData({
       isPlayingMusic: !isPlayingMusic
