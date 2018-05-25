@@ -48,7 +48,6 @@ Page({
     var movies = [];
     for (var idx in moviesDouban.subjects){
       var subject = moviesDouban.subjects[idx];
-      console.log(subject);
       var title = subject.title;
       if(title.length>6){
         title = title.substring(0,6)+"...";
@@ -69,5 +68,11 @@ Page({
     };
     // 拼接的对象设置数据
     this.setData(readyData);
+  },
+  onMoretap:function(event){
+    var category = event.currentTarget.dataset.categroy;
+    wx.navigateTo({
+      url: './more-movie/more-movie?category=' + category
+    })
   }
 })

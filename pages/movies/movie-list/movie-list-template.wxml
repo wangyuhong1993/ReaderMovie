@@ -3,7 +3,7 @@
   <view class='movie-list-conatiner'>
     <view class='movie-head'>
       <text class='slogan'>{{categoryTitle}}</text>
-      <view class='more'>
+      <view class='more' catchtap='onMoretap' data-categroy="{{categoryTitle}}">
         <text class='more-text'>更多</text>
         <image src='/images/icon/arrow-right.png' mode='widthFit'></image>
       </view>
