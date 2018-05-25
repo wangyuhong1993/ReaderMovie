@@ -8,12 +8,12 @@ Page({
     postData:null, // 页面数据
     currentPostId:'', // 当前新闻id
     collected:false, // 未收藏
-    innerAudioContext:'', // 播放器对象
     isPlayingMusic:false, // 是否播放
     currentTime:'', // 播放时长
   },
   onLoad:function(option){
     var that = this;
+    var innerAudioContext = app.globalData.innerAudioContext; // 全局播放器对象
     var postId = option.id;
     this.data.currentPostId = postId;  // 当前新闻id
     var postData = postsData.postList[postId]; // 新闻数据
@@ -41,27 +41,31 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync("posts_collected", postsCollected);
     }
-
-    var innerAudioContext = wx.createInnerAudioContext(); // 播放器对象
-    innerAudioContext.src = postsData.postList[postId].music.url;
-    innerAudioContext.volume = 0.3;
     
-    // 全局播放控制
-    // if(app.globalData.g_isPlayingMusic){
-    //   this.setData({
-    //     isPlayingMusic: true
-    //   })
-    // }
+    // 全局播放器不存在
+    if (!innerAudioContext){
+      var innerAudioContext = wx.createInnerAudioContext(); // 播放器对象
+      innerAudioContext.volume = 0.3;
+      innerAudioContext.src = postsData.postList[postId].music.url;
 
-    this.setData({
-      innerAudioContext: innerAudioContext
-    })
+      app.globalData.innerAudioContext = innerAudioContext;   
+    }else {
+      // 如果存在，直接暂停其他播放对象
+      var innerAudioContext = app.globalData.innerAudioContext;
+      innerAudioContext.src = postsData.postList[postId].music.url;
+    }
+   
+    // 全局播放控制
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postId ){
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
   },
   // 添加收藏
   onColletionTap:function(event){
     var postsCollected = wx.getStorageSync("posts_collected");
     var postCollected = postsCollected[this.data.currentPostId];
-    console.log(this.data.currentPostId);
     // 收藏变未收藏  未收藏变收藏
     postCollected = !postCollected;
     postsCollected[this.data.currentPostId] = postCollected;
@@ -128,18 +132,22 @@ Page({
   // 音频播放
   onMusicTap: function(event){
     var isPlayingMusic = this.data.isPlayingMusic;
-    var innerAudioContext = this.data.innerAudioContext;
-    console.log("播放状态"+isPlayingMusic);
+    var innerAudioContext = app.globalData.innerAudioContext;
+    
     // 播放暂停
     if (isPlayingMusic){
       console.log(1);
       innerAudioContext.pause();
+      console.log(innerAudioContext)
       app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
     }else {
       console.log(2);
       innerAudioContext.play();
       app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId = this.data.currentPostId;
     }
+
     this.setData({
       isPlayingMusic: !isPlayingMusic
     })

@@ -32,7 +32,7 @@ var local_database = [
         avatar: "/images/avatar/1.png",
         postId: 1,
         music: {
-            url: "http://ws.stream.qqmusic.qq.com/C100003GdCmG4NkEOR.m4a?fromtag=38",
+          url: "http://sc1.111ttt.cn:8282/2018/1/03m/13/396131232171.m4a?tflag=1519095601&pin=6cd414115fdb9a950d827487b16b5f97#.mp3",
             title: "鬼迷心窍-李宗盛",
             coverImg: "http://y.gtimg.cn/music/photo_new/T002R150x150M000002xOmp62kqSic.jpg?max_age=2592000"
         }

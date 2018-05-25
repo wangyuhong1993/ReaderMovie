@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.94",
-	"appid": "wx614bc1b37557c636",
+	"appid": "touristappid",
 	"projectname": "weixin",
 	"isGameTourist": false,
 	"condition": {
@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -49,6 +49,11 @@
 					"name": "post-detail",
 					"pathName": "pages/post/post-detail/post-detail",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "电影列表",
+					"pathName": "pages/movies/movies"
 				}
 			]
 		}

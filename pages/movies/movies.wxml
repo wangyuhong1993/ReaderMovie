@@ -1,0 +1,16 @@
+<!-- 电影列表 -->
+<!-- 单个电影组件 -->
+<import src="./movie-list/movie-list-template"/>
+<view class='container'>
+  <view class='movies-template'>
+    <template is="movieListTemplate" data='{{...inTheaters}}'/>
+  </view>
+   <view class='movies-template'>
+    <template is="movieListTemplate" data='{{...comingSoon}}' />
+  </view>
+  <view class='movies-template'>
+    <template is="movieListTemplate" data='{{...top250}}' />
+  </view> 
+</view>
+ 
+
