@@ -1,6 +1,6 @@
 // pages/movies/movies.js
-var util = require('../../utils/util.js')
 var app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**

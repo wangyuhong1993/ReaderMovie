@@ -1,8 +1,8 @@
 <!--pages/welcome/welcome.wxml-->
 <view class='container'>
   <image class='user-avatar' src='/images/avatar/avatar.jpg'></image>
-  <text class='motto'>Hello,七月</text>
+  <text class='motto'>Hello,俞小姐</text>
   <view class="journey-container" bind:touchstart="onContainerTap">
-    <text class='journey'>开启小程序之旅</text>
+    <text class='journey'>开启汪先生之旅</text>
   </view>
 </view>

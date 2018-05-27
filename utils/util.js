@@ -12,6 +12,30 @@ function convertToStarsArray(stars) {
   }
   return array;
 }
+function http(url,callback) {
+  var that = this;
+  // 显示加载中
+  wx.showLoading({
+    title: '加载中',
+  })
+  wx.request({
+    url: url,
+    data: {},
+    success: function (res) {
+      // console.log(res.data);
+      callback(res.data);
+      // 关闭加载中
+      wx.hideLoading();
+    },
+    fail: function (error) {
+      console.log("failed");
+    },
+    complete: function () {
+      // complete
+    }
+  })
+}
 module.exports = {
-  convertToStarsArray: convertToStarsArray
+  convertToStarsArray: convertToStarsArray,
+  http: http
 }
