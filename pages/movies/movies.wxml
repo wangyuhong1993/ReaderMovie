@@ -1,7 +1,17 @@
 <!-- 电影列表 -->
 <!-- 单个电影组件 -->
 <import src="./movie-list/movie-list-template"/>
-<view class='container'>
+<import src="./movie-grid/movie-grid-template"/>
+<view class='search'>
+  <icon type="search" class='search-img' size="13" color='#405f80'/>
+  <input type='text' placeholder='血战刚铁岭、你的名字'
+  placeholder-class="placeholder"
+  bindfocus='onBindFocus'
+  bindblur="onBindBlur"
+  ></input>
+  <image src='/images/icon/xx.png' wx:if="{{searchPanelShow}}" class="xx-img" bindtap='onCancelImgTap'></image>
+</view>
+<view class='container' wx:if="{{containerShow}}">
   <view class='movies-template'>
     <template is="movieListTemplate" data='{{...inTheaters}}'/>
   </view>
@@ -11,6 +21,10 @@
   <view class='movies-template'>
     <template is="movieListTemplate" data='{{...top250}}' />
   </view> 
+</view>
+<!-- 搜索弹窗 -->
+<view class='search-panel' wx:if="{{searchPanelShow}}">
+  <template is="movieGridTemplate" data='{{...searchResult}}'/>
 </view>
  
 

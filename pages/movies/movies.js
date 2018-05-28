@@ -10,6 +10,9 @@ Page({
     inTheaters:{}, // 正在热映
     comingSoonUrl: {}, // 即将上映
     top250: {}, // top250
+    searchResult: {}, // 搜索结果
+    containerShow: true, // 电影列表显示
+    searchPanelShow: false, // 电影搜索面板
   },
   /**
    * 生命周期函数--监听页面加载
@@ -26,6 +29,24 @@ Page({
     this.getMovieListData(comingSoonUrl, "comingSoon", "即将上映");
     this.getMovieListData(top250Url, "top250", "豆瓣Top250");
   },
+  onBindFocus: function(){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
+    })
+  },
+  onCancelImgTap:function(){
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false
+    })
+  },
+  onBindBlur:function(event){
+    var text = event.detail.value;
+    var searchUrl = app.globalData.doubanBase +
+      "/v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl,"searchResult","");
+  },
   getMovieListData: function (url, settedKey,title){
     var that = this;
     wx.request({
@@ -40,7 +61,6 @@ Page({
       },
       complete:function(){
         // complete
-
       }
     })
   },
@@ -69,10 +89,19 @@ Page({
     // 拼接的对象设置数据
     this.setData(readyData);
   },
+  // 更多电影
   onMoretap:function(event){
     var category = event.currentTarget.dataset.categroy;
     wx.navigateTo({
       url: './more-movie/more-movie?category=' + category
+    })
+  },
+  // 电影详情
+  onMovieTap:function(event){
+    var movieId = event.currentTarget.dataset.movieid;
+    // console.log(movieId);
+    wx.navigateTo({
+      url: './movie-detail/movie-detail?id=' + movieId
     })
   }
 })
