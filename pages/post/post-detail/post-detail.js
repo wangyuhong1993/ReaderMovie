@@ -14,10 +14,10 @@ Page({
   onLoad:function(option){
     var that = this;
     var innerAudioContext = app.globalData.innerAudioContext; // 全局播放器对象
-    var postId = option.id;
-    this.data.currentPostId = postId;  // 当前新闻id
+    var postId = option.id;;  
     var postData = postsData.postList[postId]; // 新闻数据
     this.setData({
+      currentPostId: postId, // 当前新闻id
       postData: postData
     })
     

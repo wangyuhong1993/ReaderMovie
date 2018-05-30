@@ -6,12 +6,13 @@ Page({
   },
   onLoad: function (options) {
     var movieId = options.id;
+    console.log(movieId);
     var url = app.globalData.doubanBase + 
       "/v2/movie/subject/"+movieId;
     util.http(url, this.processDoubanData) 
   },
   processDoubanData:function(data){
-    if(data){
+    if(!data){
       return;
     }
     var director = {
@@ -43,9 +44,15 @@ Page({
       castsInfo: util.convertToCastInfos(data.casts),
       summary: data.summary
     }
-    console.log(movie);
     this.setData({
       movie:movie
+    })
+  },
+  viewMoviePostImg:function(event){
+    var src = event.currentTarget.dataset.src;
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: [src] // 需要预览的图片http链接列表
     })
   }
 })
